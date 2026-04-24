@@ -26,3 +26,23 @@ document.addEventListener("DOMContentLoaded",()=>{
     menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu.classList.remove("open")));
   }
 });
+
+const gmailForm = document.getElementById("gmail-form");
+
+if (gmailForm) {
+  gmailForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nom = document.getElementById("nom").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const body = encodeURIComponent(
+      `Nom : ${nom}\nEmail : ${email}\n\nMessage :\n${message}`
+    );
+
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=inno.twa@gmail.com&su=Message depuis le site TWAGIRUMUKIZA&body=${body}`;
+
+    window.open(url, "_blank");
+  });
+}
